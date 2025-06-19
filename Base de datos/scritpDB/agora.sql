@@ -777,6 +777,11 @@ ALTER TABLE `venta`
   ADD CONSTRAINT `venta_ibfk_3` FOREIGN KEY (`id_reservacion`) REFERENCES `reservacion` (`id_reservacion`);
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+select
+concat (c.nombre, ' ', c.apellido) as nombre_apellido,
+e.nombre_evento,
+e.fecha_inicio,
+r.estado as estado_reservacion
+from reservacion as r
+inner join cliente as c on r.id_doc = c.id.doc
+inner join evento e on r.id.evento = e.id_evento;
