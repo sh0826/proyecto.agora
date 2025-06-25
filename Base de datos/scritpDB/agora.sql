@@ -170,8 +170,8 @@ INSERT INTO `detalle_venta` (`id_detalleV`, `descripcion`, `monto_total`, `abono
 (3, 'HERETIC', 200000, 150000, 2, 50000, 3, 3),
 (4, 'JACK_DANIELS_HONEY_MD', 95000, 40000, 1, 55000, 4, 4),
 (5, 'JACK_DANIELS_N7_MD', 175000, 100000, 1, 75000, 5, 5),
-(6, 'ANTIOQUEÃ‘O_VERDE_MD', 200000, 50000, 3, 150000, 6, 6),
-(7, 'ANTIOQUEÃ‘O_VERDE_BT', 325650, 60000, 2, 265650, 7, 7),
+(6, 'ANTIOQUEÑO_VERDE_MD', 200000, 50000, 3, 150000, 6, 6),
+(7, 'ANTIOQUEÑO_VERDE_BT', 325650, 60000, 2, 265650, 7, 7),
 (8, 'SMIRNOFF_TAMARINDO_BT', 500000, 30000, 4, 470000, 8, 8),
 (9, 'Reservacion', 654000, 540000, 1, 114000, 9, 9),
 (10, 'Reservacion', 205000, 50000, 2, 155000, 10, 10),
@@ -206,9 +206,9 @@ CREATE TABLE `evento` (
 --
 
 INSERT INTO `evento` (`id_evento`, `nombre_evento`, `fecha_inicio`, `tipo_evento`, `descripcion`, `fecha_final`, `capacidad_max`, `estado`, `hora_inicio`, `hora_final`, `id_servicio`) VALUES
-(1, 'Noche de Cocteles Artesanales', '2025-12-01', 'empresarial', 'DegustaciÃ³n de cocteles exclusivos', '2025-01-14', 20, 'cancelado', '00:00:00', '00:00:00', 1),
-(2, 'Cata de Vinos Boutique', '2025-09-02', 'comun', 'SelecciÃ³n de vinos premium con sommelier', '2025-05-03', 25, 'confirmado', '00:00:00', '00:00:00', 2),
-(3, 'Fiesta Retro 80â€™s', '2025-05-03', 'comun', 'MÃºsica y ambiente ochentero, disfraces opcionales', '2025-04-19', 40, 'cancelado', '00:00:00', '00:00:00', 3),
+(1, 'Noche de Cocteles Artesanales', '2025-12-01', 'empresarial', 'Degustacion de cocteles exclusivos', '2025-01-14', 20, 'cancelado', '00:00:00', '00:00:00', 1),
+(2, 'Cata de Vinos Boutique', '2025-09-02', 'comun', 'Seleccion de vinos premium con sommelier', '2025-05-03', 25, 'confirmado', '00:00:00', '00:00:00', 2),
+(3, 'Fiesta Retro 80s', '2025-05-03', 'comun', 'MÃºsica y ambiente ochentero, disfraces opcionales', '2025-04-19', 40, 'cancelado', '00:00:00', '00:00:00', 3),
 (4, 'Noche de Jazz en Vivo', '2025-11-04', 'comun', 'PresentaciÃ³n de banda local de jazz', '2025-08-05', 35, 'cancelado', '00:00:00', '00:00:00', 4),
 (5, 'Taller de MixologÃ­a Creativa', '2025-08-05', 'comun', 'Aprende a preparar cocteles innovadores', '2025-06-23', 25, 'cancelado', '00:00:00', '00:00:00', 5),
 (6, 'Festival de Cervezas Artesanales', '2025-10-06', 'empresarial', 'DegustaciÃ³n de cervezas locales e importadas', '0000-00-00', 20, 'confirmado', '00:00:00', '00:00:00', 6),
@@ -246,8 +246,8 @@ INSERT INTO `inventario` (`id_producto`, `nombre`, `categoria`, `stock`, `costo`
 (3, 'HERETIC', 'HERBAL', 5, 130000),
 (4, 'JACK_DANIELS_HONEY_MD', 'WHISKY', 4, 87000),
 (5, 'JACK_DANIELS_N7_MD', 'WHISKY', 2, 87000),
-(6, 'ANTIOQUEÃ‘O_VERDE_MD', 'AGUARDIENTE', 15, 50000),
-(7, 'ANTIOQUEÃ‘O_AZUL_MD', 'AGUARDIENTE', 10, 50000),
+(6, 'ANTIOQUEÑO_VERDE_MD', 'AGUARDIENTE', 15, 50000),
+(7, 'ANTIOQUEÑO_AZUL_MD', 'AGUARDIENTE', 10, 50000),
 (8, 'SMIRNOFF_TAMARINDO_BT', 'VODKA', 8, 87000),
 (9, 'POKER_PETACO', 'CERVEZA', 12, 105000),
 (10, 'POKER_UNIDAD', 'CERVEZA', 360, 3500),
@@ -777,6 +777,11 @@ ALTER TABLE `venta`
   ADD CONSTRAINT `venta_ibfk_3` FOREIGN KEY (`id_reservacion`) REFERENCES `reservacion` (`id_reservacion`);
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+select
+concat (c.nombre, ' ', c.apellido) as nombre_apellido,
+e.nombre_evento,
+e.fecha_inicio,
+r.estado as estado_reservacion
+from reservacion as r
+inner join cliente as c on r.id_doc = c.id.doc
+inner join evento e on r.id.evento = e.id_evento;
