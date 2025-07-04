@@ -171,49 +171,58 @@ form button:hover {
     </div>
 </footer>
 </div>
-</body>
-
-<script>
+	<script>
 document.getElementById('reservacion').addEventListener('submit', function(e) {
-  obj1 = document.getElementById('nom');
-  obj2 = document.getElementById('ap');
-  obj3 = document.getElementById('cal');
-  obj4 = document.getElementById('cant');
-  obj5 = document.getElementById('tel');
-obj6 = document.getElementById('oc');
-			nom = obj1.value;
-			ap = obj2.value;
-			cal = obj3.value;
-            cant = obj4.value;
-            tel = obj5.value;
-            oc = obj6.value;
-  alert("Hola " + nom +  " " + ap + " usted tiene una reservacion el dia " + cal + "con una cantidad de " + cant + " personas, su numero de contacto es " + tel + "  y la ocasion es " + oc);
+  // Obtener los campos
+  const nombre = document.getElementById('nom');
+  const apellido = document.getElementById('ap');
+  const fecha = document.getElementById('cal');
+  const cantidad = document.getElementById('cant');
+  const telefono = document.getElementById('tel');
+  const ocasion = document.getElementById('oc');
 
-  [nombre, apellido, fecha, cantidad, telefono].forEach(input => input.setCustomValidity(""));
+  let errores = false;
 
+  // Validaciones manuales
   if (nombre.value.trim() === "") {
-alert("Por favor, escribe tu nombre.");
+    alert("Por favor, escribe tu nombre.");
+    errores = true;
   }
 
   if (apellido.value.trim() === "") {
-alert("Por favor, escribe tu apellido.");
+    alert("Por favor, escribe tu apellido.");
+    errores = true;
   }
 
   if (!fecha.value) {
-alert("Selecciona una fecha para la reservación.");
+    alert("Selecciona una fecha para la reservación.");
+    errores = true;
   }
 
-  if (cantidad.value < 1 || cantidad.value > 80) {
+  if (cantidad.value < 1 || cantidad.value > 80 || cantidad.value === "") {
     alert("Solo puedes reservar entre 1 y 80 personas.");
+    errores = true;
   }
 
   if (telefono.value.trim() === "") {
-alert("Escribe tu celular.");
+    alert("Escribe tu celular.");
+    errores = true;
   }
-    if (!this.checkValidity()) {
-    e.preventDefault(); 
-    this.reportValidity();
+
+  // Si hay errores, se detiene el envío del formulario
+  if (errores) {
+    e.preventDefault();
+    return;
   }
+
+  // Si no hay errores, muestra el resumen
+  alert("Hola " + nombre.value + " " + apellido.value + 
+        ", usted tiene una reservación el día " + fecha.value + 
+        " con una cantidad de " + cantidad.value + 
+        " personas. Su número de contacto es " + telefono.value + 
+        " y la ocasión es: " + ocasion.value + ".");
 });
 </script>
+	
+</body>
 </html>
