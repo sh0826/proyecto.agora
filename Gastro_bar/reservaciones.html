@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservaciones</title>
+    <style>
+
+body{
+   margin: 0;
+    background-color: #790101;
+    font-family: Arial,  sans-serif;
+}
+
+.logo img{
+    position: relative;
+    width: 650px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: -200px;
+}
+nav{
+  padding: 0px;
+    background-color:#4B1F1F;
+    border:2px solid rgb(0, 0, 0);
+    border-radius: 2px;
+    position: relative;
+    top: -150px; /* Ajusta el valor según lo que necesites */
+}
+ul{
+    list-style-type:  none;
+    display: flex;
+    justify-content: space-around;/*distribuye los elementos equitativamente*/
+    padding: 0px;
+
+}
+li{
+    margin: 0;
+    padding: 2px;
+
+}
+
+li:hover{
+    transition: 250px;
+    background-color: #000;
+    letter-spacing: 3px;
+    text-shadow:0 0 10px rgba(247, 247, 247, 0.5) ;
+
+}
+nav a {
+    display: block; /* Hace que el enlace ocupe todo el espacio del cuadrado */
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+   padding: 10px 15px;
+ 
+    color: #ffffff; /* Color del texto */
+    border-radius: 5px; /* Bordes ligeramente redondeados */
+    text-align: center; /* Centra el texto */
+    transition: background-color 0.3s ease; /* Efecto de transición al pasar el ratón */
+    
+}
+.contenedor-flex {
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contenido{
+    background-image: url('imagenes/fondo-bar.svg');
+    margin-top: -150px;
+}
+
+.Formulario{
+    background-color: #4B1F1F;
+    padding: 50px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    align-items: center;
+}
+
+h2 {
+    text-align: center;
+    color: #fffaf1;
+    margin-top: -20px;
+    
+}
+
+
+
+form input, form textarea, form button {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #e60000;
+}
+
+form button {
+    background-color: rgb(203, 203, 203);
+    width: 315px;
+    color: rgb(0, 0, 0);
+    border: none;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #790101;
+}
+.footer {
+    background-color: #111;
+    color: #eee;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    margin-top: 30px;
+}
+
+.footer a {
+    color: #ffa500; /* naranja */
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+    </style>
+</head>
+<body>
+    <header class="presentacion">
+    <div class="logo">
+        <img src="imagenes/logo1.svg" alt="logo">
+       </div> 
+    <nav>
+        <ul>
+        <li><a href="catalogo.html">Catalogo</a></li>
+        <li><a href="reservaciones.html">Reservaciones</a></li>
+        <li><a href="eventos.html">Eventos </a></li>
+        <li><a href="index.html">Conocenos</a></li>
+      </ul>
+    </nav>
+ </header>
+     <div class="contenido">
+
+<div class="contenedor-flex">
+  <div class="Formulario">
+    <h2>Reservación</h2>
+    <form action="reservar" method="POST" id="reservacion" novalidate>
+      <input type="text" id="nom" name="nom" placeholder="Nombre" required autofocus>
+      <input type="text" id="ap" name="ap" placeholder="Apellido" required>
+      <input type="date" id="cal" name="cal" required>
+      <input type="number" id="cant" name="cant" placeholder="Cantidad de personas" min="1" max="80" required>
+      <input type="number" id="tel" name="tel" placeholder="Celular" required>
+       <input type="text" id="oc" name="oc" placeholder="Ocasión">
+      <button type="submit">Reservar</button>
+    </form>
+  </div>
+</div>
+
+    </div>
+<footer class="footer">
+    <div class="footer-contenido">
+        <p><strong>📍 Dirección:</strong> Calle 123 #45-67, Bogotá, Colombia</p>
+        <p><a href="#">Términos y condiciones</a> | <a href="#">Política de privacidad</a></p>
+        <p><strong>📧 Contacto:</strong> agoravives@correo.com</p>
+        <p>&copy; 2025 Agora Vives Pub. Todos los derechos reservados.</p>
+    </div>
+</footer>
+</div>
+</body>
+
+<script>
+document.getElementById('reservacion').addEventListener('submit', function(e) {
+  obj1 = document.getElementById('nom');
+  obj2 = document.getElementById('ap');
+  obj3 = document.getElementById('cal');
+  obj4 = document.getElementById('cant');
+  obj5 = document.getElementById('tel');
+obj6 = document.getElementById('oc');
+			nom = obj1.value;
+			ap = obj2.value;
+			cal = obj3.value;
+            cant = obj4.value;
+            tel = obj5.value;
+            oc = obj6.value;
+  alert("Hola " + nom +  " " + ap + " usted tiene una reservacion el dia " + cal + "con una cantidad de " + cant + " personas, su numero de contacto es " + tel + "  y la ocasion es " + oc);
+
+  [nombre, apellido, fecha, cantidad, telefono].forEach(input => input.setCustomValidity(""));
+
+  if (nombre.value.trim() === "") {
+alert("Por favor, escribe tu nombre.");
+  }
+
+  if (apellido.value.trim() === "") {
+alert("Por favor, escribe tu apellido.");
+  }
+
+  if (!fecha.value) {
+alert("Selecciona una fecha para la reservación.");
+  }
+
+  if (cantidad.value < 1 || cantidad.value > 80) {
+    alert("Solo puedes reservar entre 1 y 80 personas.");
+  }
+
+  if (telefono.value.trim() === "") {
+alert("Escribe tu celular.");
+  }
+    if (!this.checkValidity()) {
+    e.preventDefault(); 
+    this.reportValidity();
+  }
+});
+</script>
+</html>
