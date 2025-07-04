@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <style>
+            body { 
+      margin: 0;
+     font-family: 'Bebas Neue', sans-serif;
+    background-color: #121212;
+    color: #fff;
+    }
+    h1 { 
+        color: #000000; 
+        text-align: center;
+        background-color: #ffffffaf;
+    }
+    .panel { 
+      background-color: #790101;
+    background-image: url('imagenes/fondo-bar.svg');
+         padding: 20px; 
+         border-radius: 10px; 
+    box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+         align-items: center;
+         margin: auto;
+         border:2px solid #000000;
+         text-align: center;
+         
+        }
+        .panel li {
+            align-items: center;
+            padding: 8px ;
+            border:5px solid #000000;
+            box-sizing: content-box;
+            border-radius: 8px;
+            background-color: #000000;
+            margin: auto;
+        }
+        .panel a{
+     
+            text-decoration: none;
+            padding: 5px;
+            color: white;
+        
+         
+        }
+        p{
+            text-align: center;
+           
+            color: #fff0f0;
+            text-transform: capitalize;
+
+        }
+        .panel button {
+          align-items: center;
+            padding: 8px ;
+            border:5px solid #000000;
+            box-sizing: content-box;
+            border-radius: 8px;
+            background-color: #ffffff;
+            color:rgb(0, 0, 0) ;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+     <div class="panel">
+    <h1>Bienvenido, Administrador</h1>
+    <p>Opciones disponibles:</p>
+    <nav><ul>
+      <li><a href="error.html"> 👥Ver y gestionar usuarios</a></li><br>
+      <li><a href="#">🗂️ Consultar reportes</a></li><br>
+      <li><a href="dasshboard.html"> 👀 Ver Estadísticas del negocio</a></li><br>
+      <li><a href="#">🔐 Asignar roles y permisos</a></li><br>
+    </ul>
+    </nav>
+    <button onclick="cerrarSesion()">Cerrar Sesión</button>
+  </div>
+
+  <script>
+    function cerrarSesion() {
+      window.location.href = "index.html";
+    }
+    </script>
+</body>
+</html>

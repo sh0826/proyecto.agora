@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agora Vives Pub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/gastro.css">
+</head>
+<body>
+    <img src="imagenes/logo1.svg" alt="">
+    <div class="container">
+        <div class="inicio_sesion">
+            <h2>INICIO DE SESIÓN</h2>
+            <form id="Formulario" method="post">
+                <input type="email" name="usus" id="usus" required placeholder="Correo del usuario" autofocus>
+                <input type="password" name="contra" id="contra" required placeholder="Contraseña">
+                <div class="buttons">
+                    <input type="submit" value="Aceptar" class="submit">
+                    <input type="reset" value="Cancelar" class="reset">
+                </div>
+            </form> 
+        </div> 
+    </div>
+
+    <script>
+        document.getElementById("Formulario").addEventListener("submit", function(event){ 
+            event.preventDefault();
+            const correo = document.getElementById("usus").value.trim();
+            const contra = document.getElementById("contra").value.trim();
+
+            if(correo === "camilo@example.com" && contra === "12345678"){
+                window.location.href = "Admin.html";
+            } else if (correo === "paula@example.com" && contra === "12345678"){
+                window.location.href = "Admin.html";
+            } else if (correo === "sharon@example.com" && contra === "12345678"){
+                window.location.href = "Admin.html";
+            } else if (correo === "johan@example.com" && contra === "12345678"){
+                window.location.href = "Empleado.html";
+            } else if (correo === "marcela@example.com" && contra === "12345678"){
+                window.location.href = "Empleado.html";
+            } else {
+                alert("Correo o contraseña incorrectos.");
+            }
+        });
+    </script>
+</body>
+</html>
