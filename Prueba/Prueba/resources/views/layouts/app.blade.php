@@ -140,6 +140,8 @@
           <li><a href="eventos">Eventos</a></li>
           <li><a href="{{ url('/home') }}">Eventos</a></li>
 
+          <li><a href="{{ url('/home') }}">EventOS</a></li>
+
           @guest
               @if (Route::has('login'))
                   <li><a href="{{ route('login') }}" style="color: rgb(236, 52, 52);">Iniciar sesión</a></li>

@@ -136,6 +136,7 @@
       </div>
       <nav>
         <ul class="d-flex">
+          <li><a href="{{ url('/catalogo') }}">Catálogo</a></li>
           <li><a href="{{ url('/layouts/home.blade.php') }}">Eventos</a></li>
           <li><a href="{{ url('/conocenos') }}">Conócenos</a></li>
           <li><a href="{{ url('/reservaciones') }}">Reservacion </a></li>
