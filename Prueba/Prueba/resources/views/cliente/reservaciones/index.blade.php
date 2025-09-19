@@ -22,7 +22,8 @@
     @foreach ($reservaciones as $reservacion)
     <tr>
         <td>{{ $reservacion->id }}</td>
-        <td>{{ $reservacion->User->name }} - {{ $reservacion->usuario->tipo_documento }}</td>
+        <td>{{ $reservacion->user?->name ?? 'Usuario no asignado' }}</td>
+
         <td>{{ $reservacion->cantidad_personas }}</td>
         <td>{{ $reservacion->cantidad_mesas }}</td>
         <td>{{ $reservacion->fecha_reservacion }}</td>
@@ -35,9 +36,7 @@
         <button class="btn btn-sm btn-danger" onclick="return confirm('Eliminar producto')">Eliminar</button>    
         </form>
         </td>
-    </tr>
-    
-    @endforeach
+</tr>
     
     </tbody>
     @endforeach
