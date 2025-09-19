@@ -7,7 +7,7 @@
         <div class="mb-3">
             <label for="id" class="form-label">Usuario</label>
             <select name="id" id="role" class="form-select" required>
-                @foreach($usuario as $usuario)
+                @foreach($User as $usuario)
                     <option value="{{ $usuario->role }}">
                         {{ $usuario->name }} {{$usuario->role=="Cliente"}}  ({{ $usuario->numero_documento }})
                     </option>
