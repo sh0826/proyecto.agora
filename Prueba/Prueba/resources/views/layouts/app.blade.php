@@ -138,7 +138,11 @@
         <ul class="d-flex">
           <li><a href="catalogo">Catálogo</a></li>
 
+<<<<<<< Updated upstream
           <li><a href="eventos">Eventos</a></li>
+=======
+          <li><a href="{{ url('/home') }}">EventOS</a></li>
+>>>>>>> Stashed changes
 
           @guest
               @if (Route::has('login'))

@@ -1,23 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
+<div class="container mt-4">
+    <h2 class="mb-4">Próximos Eventos</h2>
+    <div class="row">
+        @foreach($eventos as $evento)
+            <div class="col-md-4 mb-3">
+                <div class="card h-100 shadow-sm">
+                    @if($evento->imagen)
+                        <img src="{{ asset('storage/'.$evento->imagen) }}" class="card-img-top" alt="Imagen del evento">
                     @endif
-
-                    {{ __('You are logged in!') }}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $evento->nombre_evento }}</h5>
+                        <p class="card-text">
+                            Fecha: {{ $evento->fecha }} <br>
+                            Hora: {{ $evento->hora_inicio }}
+                        </p>
+                        <a href="#" class="btn btn-primary">Ver más</a>
+                    </div>
                 </div>
             </div>
-        </div>
+        @endforeach
     </div>
 </div>
 @endsection
