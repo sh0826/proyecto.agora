@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.Empleado')
 
 @section('title', 'Lista de Productos')
 

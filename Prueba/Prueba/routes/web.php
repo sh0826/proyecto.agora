@@ -39,23 +39,11 @@ Route::get('/admin/dashboard', function () {
 
 // CRUD de empleados
 Route::resource('empleados', EmpleadoController::class);
-Route::prefix('empleados')->name('empleados.')->group(function (){
-Route::resource('detalles',DetalleVentaControlador::class);});
-Route::prefix('empleados')->name('empleados.')->group(function (){
-    Route::resource('ventas',ventaControlador::class);
-});
-
-
-
-
+Route::resource('productos',ProductoControlador::class);
+Route::resource('ventas', ventaControlador::class);
 Route::resource('reservaciones', reservacionControlador::class)
 ->parameters(['reservaciones'=>'reservacion']);
-
-Route::resource('productos',ProductoControlador::class);
-Route::resource('detalle', DetalleVentaControlador::class);
 Route::resource('eventos', EventoController::class);
-Route::resource('ventas', ventaControlador::class);
-
 Route::resource('boletas', BoletaController::class);
 
 Route::get('/catalogo', function(){
