@@ -40,9 +40,8 @@ Route::prefix('empleados')->name('empleados.')->group(function (){
     Route::resource('ventas',ventaControlador::class);
 });
 
-Route::prefix('empleados')->name('empleados.')->group(function () {
-    Route::resource('reservaciones', reservacionControlador::class);
-});
+Route::resource('reservaciones', reservacionControlador::class)
+->parameters(['reservaciones'=>'reservacion']);
 
 Route::resource('productos',ProductoControlador::class);
 Route::resource('eventos', EventoController::class);

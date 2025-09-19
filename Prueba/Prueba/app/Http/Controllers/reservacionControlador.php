@@ -16,7 +16,7 @@ class reservacionControlador extends Controller
     public function index()
     {
         $reservaciones=Reservacion::all();
-        return view('empleados.reservaciones.index',compact('reservaciones'));
+        return view('cliente.reservaciones.index',compact('reservaciones'));
         //lista del producto
     }
 
@@ -26,7 +26,7 @@ class reservacionControlador extends Controller
     public function create()
     {
         //formulario donde estan los campos a registrar
-        return view('empleados.reservaciones.create');
+        return view('cliente.reservaciones.create');
     }
 
     /**
@@ -62,7 +62,7 @@ class reservacionControlador extends Controller
      */
 public function edit(Reservacion $reservacion)
 {
-    return view('empleados.reservaciones.edit', compact('reservacion'));
+    return view('cliente.reservaciones.edit', compact('reservacion'));
 }
 
     /**

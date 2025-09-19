@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app2')
 @section('title', 'Lista de tus reservas!')
 
 @section('content')
@@ -22,8 +22,8 @@
     <tbody>
     @foreach ($reservaciones as $reservacion)
     <tr>
-        <td>{{ $reservacion->id_usuario }}</td>
-        <td>{{ $reservacion->usuario->nombre }} - {{ $reservacion->usuario->cedula }}</td>
+        <td>{{ $reservacion->id }}</td>
+        <td>{{ $reservacion->usuario->name }} - {{ $reservacion->usuario->tipo_documento }}</td>
         <td>{{ $reservacion->cantidad_personas }}</td>
         <td>{{ $reservacion->cantidad_mesas }}</td>
         <td>{{ $reservacion->fecha_reservacion }}</td>
