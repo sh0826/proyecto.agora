@@ -36,6 +36,9 @@
         </form>
         </td>
     </tr>
+    
+    @endforeach
+    
     </tbody>
     @endforeach
 @endsection
