@@ -39,6 +39,7 @@ Route::resource('detalles',DetalleVentaControlador::class);});
 Route::prefix('empleados')->name('empleados.')->group(function (){
     Route::resource('ventas',ventaControlador::class);
 });
+
 Route::prefix('empleados')->name('empleados.')->group(function () {
     Route::resource('reservaciones', reservacionControlador::class);
 });

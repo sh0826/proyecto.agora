@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon $fecha_reservacion
  * @property string|null $ocasion
  * 
- * @property Usuario|null $usuario
+ * @property User|null $usuario
  *
  * @package App\Models
  */
@@ -30,14 +30,14 @@ class Reservacion extends Model
 	public $timestamps = false;
 
 	protected $casts = [
-		'id_usuario' => 'int',
+		'id' => 'int',
 		'cantidad_personas' => 'int',
 		'cantidad_mesas' => 'int',
 		'fecha_reservacion' => 'datetime'
 	];
 
 	protected $fillable = [
-		'id_usuario',
+		'id',
 		'cantidad_personas',
 		'cantidad_mesas',
 		'fecha_reservacion',
@@ -46,6 +46,6 @@ class Reservacion extends Model
 
 	public function usuario()
 	{
-		return $this->belongsTo(Usuario::class, 'id_usuario');
+		return $this->belongsTo(User::class, 'id');
 	}
 }

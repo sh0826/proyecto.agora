@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $metodo_pago
  * @property int|null $id_usuario
  * 
- * @property Usuario|null $usuario
+ * @property User|null $usuario
  * @property Collection|DetalleVenta[] $detalle_venta
  *
  * @package App\Models
@@ -33,19 +33,19 @@ class Venta extends Model
 	protected $casts = [
 		'fecha' => 'datetime',
 		'total' => 'float',
-		'id_usuario' => 'int'
+		'id' => 'int'
 	];
 
 	protected $fillable = [
 		'fecha',
 		'total',
 		'metodo_pago',
-		'id_usuario'
+		'id'
 	];
 
 	public function usuario()
 	{
-		return $this->belongsTo(Usuario::class, 'id_usuario');
+		return $this->belongsTo(User::class, 'id');
 	}
 
 	public function detalle_venta()

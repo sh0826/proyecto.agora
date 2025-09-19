@@ -91,9 +91,9 @@
       </div>
       <nav>
         <ul class="d-flex">
-          <li><a href="{{ url('/catalogo') }}">Catálogo</a></li>
+          <li><a href="catalogo">Catálogo</a></li>
 
-          <li><a href="{{ url('/conocenos') }}">Conócenos</a></li>
+          <li><a href="{{ url('/eventos') }}">Eventos</a></li>
 
           @guest
               @if (Route::has('login'))

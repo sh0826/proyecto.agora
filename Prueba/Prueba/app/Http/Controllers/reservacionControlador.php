@@ -35,7 +35,7 @@ class reservacionControlador extends Controller
     public function store(Request $request)
 {
     $validated = $request->validate([
-        'id_usuario' => 'required|integer',
+        'id' => 'required|integer',
         'cantidad_personas' => 'required|integer|min:1',
         'cantidad_mesas' => 'required|integer|min:1',
         'fecha_reservacion' => 'required|date',
@@ -73,7 +73,7 @@ public function edit(Reservacion $reservacion)
         {
     // Validación de los campos que sí llena el cliente
     $validated = $request->validate([
-        'id_usuario' => 'required|integer',
+        'id' => 'required|integer',
         'cantidad_personas' => 'required|integer|min:1',
         'cantidad_mesas' => 'required|integer|min:1',
         'fecha_reservacion' => 'required|date',
