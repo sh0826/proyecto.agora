@@ -137,7 +137,13 @@
       <nav>
         <ul class="d-flex">
           <li><a href="catalogo">Catálogo</a></li>
+<<<<<<< HEAD
           <li><a href="{{ url('/home') }}">Eventos</a></li>
+=======
+          <li><a href="eventos">Eventos</a></li>
+          <li><a href="{{ url('/home') }}">Eventos</a></li>
+
+>>>>>>> 969592e6edaa79a2a3ab5e84287b51eda20653f2
           @guest
               @if (Route::has('login'))
                   <li><a href="{{ route('login') }}" style="color: rgb(236, 52, 52);">Iniciar sesión</a></li>

@@ -44,8 +44,8 @@ class Reservacion extends Model
 		'ocasion'
 	];
 
-	public function usuario()
+	public function User()
 	{
-		return $this->belongsTo(User::class, 'id');
+		return $this->belongsTo(User::class, 'id');	
 	}
 }
