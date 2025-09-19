@@ -34,9 +34,15 @@ Route::get('/admin/dashboard', function () {
 
 // CRUD de empleados
 Route::resource('empleados', EmpleadoController::class);
-Route::resource('detalles',DetalleVentaControlador::class);
-Route::resource('venta',ventaControlador::class);
-Route::resource('reservaciones',reservacionControlador::class);
+Route::prefix('empleados')->name('empleados.')->group(function (){
+Route::resource('detalles',DetalleVentaControlador::class);});
+Route::prefix('empleados')->name('empleados.')->group(function (){
+    Route::resource('ventas',ventaControlador::class);
+});
+Route::prefix('empleados')->name('empleados.')->group(function () {
+    Route::resource('reservaciones', reservacionControlador::class);
+});
+
 Route::resource('productos',ProductoControlador::class);
 Route::resource('eventos', EventoController::class);
 Route::resource('boletas', BoletaController::class);
@@ -47,4 +53,3 @@ Route::get('/cliente/dashboard', function () {
 
 // Empleado
 Route::get('/empleado/empl', [EmpleadoController::class, 'soloLectura'])->name('empleado.empl');
-
