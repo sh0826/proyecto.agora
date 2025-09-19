@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - Agora Vives Pub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Bebas Neue', sans-serif;
+            background-color: #121212;
+            color: #fff;
+        }
+
+        /* Barra lateral */
+        .contenido {
+            height: 100vh;
+            width: 220px;
+            background-color: #1e1e1e;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding-top: 20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+        }
+
+        .contenido img {
+            width: 100px;
+            margin: 0 auto;
+            display: block;
+            border-radius: 50%;
+        }
+
+        .contenido h2 {
+            text-align: center;
+            margin: 10px 0;
+            color: #FFD700;
+        }
+
+        .contenido a {
+            display: block;
+            padding: 15px 20px;
+            color: #ccc;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .contenido a:hover {
+            background-color: #FFD700;
+            color: #000;
+        }
+
+        /* Contenido */
+        .pag {
+            margin-left: 220px;
+            padding: 30px;
+        }
+
+        .card {
+            background-color: #1c1c1c;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #FFD70055;
+        }
+
+        .card h3 {
+            color: #FFD700;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="contenido">
+        <img src="imagenes/logo1.svg" alt="Logo X">
+        <h2>Dashboard</h2>
+        <a href="#">Inicio</a>
+        <a href="#">Usuarios</a>
+        <a href="#">Reportes</a>
+        <a href="#">Configuración</a>
+        <a href="Admin.html">Volver</a>
+    </div>
+
+    <div class="pag">
+        <h1>Bienvenido a Agora Vives Pub</h1>
+
+        <div class="venta">
+            <h3>Estadísticas de Ventas</h3>
+            <p>Total hoy: $450.000</p>
+        </div>
+
+        <div class="venta">
+            <h3>Usuarios Conectados</h3>
+            <p>5 empleados activos</p>
+        </div>
+
+        <div class="venta">
+            <h3>Eventos próximos</h3>
+            <p>Fiesta temática - 6 de julio</p>
+        </div>
+    </div>
+
+</body>
+</html>

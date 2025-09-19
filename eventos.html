@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos Agora Vibe</title>
+</head>
+<body>
+      <style>
+
+body{
+   margin: 0;
+    background-color: #790101;
+    font-family: Arial,  sans-serif;
+}
+.logo img{
+    position: relative;
+    width: 650px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: -200px;
+}
+
+
+nav{
+  padding: 0px;
+    background-color:#4B1F1F;
+    border:2px solid rgb(0, 0, 0);
+    border-radius: 2px;
+    position: relative;
+    top: -150px; /* Ajusta el valor según lo que necesites */
+}
+
+ul{
+    list-style-type:  none;
+    display: flex;
+    justify-content: space-around;/*distribuye los elementos equitativamente*/
+    padding: 0px;
+}
+li{
+    margin: 0;
+    padding: 2px;
+
+}
+
+li:hover{
+    transition: 250px;
+    background-color: #000;
+    letter-spacing: 3px;
+    text-shadow:0 0 10px rgba(247, 247, 247, 0.5) ;
+}
+
+nav a {
+    display: block; /* Hace que el enlace ocupe todo el espacio del cuadrado */
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+   padding: 10px 15px;
+    color: #ffffff; /* Color del texto */
+    border-radius: 5px; /* Bordes ligeramente redondeados */
+    text-align: center; 
+    transition: background-color 0.3s ease; 
+    
+}
+.fondo{
+    background-image: url('imagenes/fondo-bar.svg');
+    margin-top: -150px;
+}
+
+.contenido{
+    margin-left: 345px;
+    text-align: left;
+}
+.contenido h2{
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    text-align: left;
+  color: rgb(255, 255, 255); text-shadow: 0 0 5px #fff;
+    border:  3px solid #e6c200;
+    width: 613px;
+    padding: 15px;
+    letter-spacing: 2px;
+    background-color: #d30707ba;
+}
+.contenido p {
+    margin-top: 0;
+    text-align: left;
+    color: #000000;
+    border:  3px solid #e6c200;
+    width: 613px;
+    padding: 15px;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    background-color: #ffffffdc;
+}
+  </style>
+</head>
+<body>
+
+ <header class="presentacion">
+    <div class="logo">
+        <img src="imagenes/logo1.svg" alt="logo">
+       </div> 
+
+    <nav>
+        <ul>
+        <li><a href="catalogo.html">Catalogo</a></li>
+        <li><a href="reservaciones.html">Reservaciones</a></li>
+        <li><a href="eventos.html">Eventos </a></li>
+        <li><a href="index.html">Conocenos</a></li>
+      </ul>
+    </nav>
+ </header>
+
+ <div class="fondo">
+<section class="contenido">
+  <h2>🎉 Eventos Destacados</h2>
+
+  <article>
+    <h3 style="color: rgb(255, 255, 255); text-shadow: 0 0 5px #fff;">🎸 Noche de Rock en Vivo</h3>
+    <p>Viernes 5 de julio - 8:00 PM<br>
+    Vive la energía con bandas locales, cerveza artesanal y buena vibra.</p>
+  </article>
+
+  <article>
+    <h3 style="color: rgb(255, 255, 255); text-shadow: 0 0 5px #fff;">🎤 Karaoke & Tragos</h3>
+    <p>Sábado 6 de julio - 9:00 PM<br>
+    Suelta tu voz con tus canciones favoritas y disfruta de cocteles 2x1.</p>
+  </article>
+
+  <article>
+    <h3 style="color: rgb(255, 255, 255); text-shadow: 0 0 5px #fff;">🍷 Cata de Vinos & Tapas</h3>
+    <p>Domingo 7 de julio - 7:00 PM<br>
+    Una noche para los sentidos con sabores únicos, reserva tu cupo.</p>
+  </article>
+</section>
+</div>
+</body>
+</html>
