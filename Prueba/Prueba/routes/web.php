@@ -47,6 +47,9 @@ Route::prefix('empleados')->name('empleados.')->group(function () {
 Route::resource('productos',ProductoControlador::class);
 Route::resource('eventos', EventoController::class);
 Route::resource('boletas', BoletaController::class);
+Route::get('/catalogo', function(){
+    return view('catalogo');
+});
 // Cliente
 Route::get('/cliente/dashboard', function () {
     return view('cliente.dashboard');

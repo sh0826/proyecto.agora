@@ -97,14 +97,6 @@
       </div>
   </div>
 
-  <footer class="footer">
-    <div class="footer-contenido">
-      <p><strong>📍 Dirección:</strong> Calle 123 #45-67, Bogotá, Colombia</p>
-      <p><a href="#">Términos y condiciones</a> | <a href="#">Política de privacidad</a></p>
-      <p><strong>📧 Contacto:</strong> agoravives@correo.com</p>
-      <p>&copy; 2025 Agora Vives Pub. Todos los derechos reservados.</p>
-    </div>
-  </footer>
 
 </body>
 </html>
