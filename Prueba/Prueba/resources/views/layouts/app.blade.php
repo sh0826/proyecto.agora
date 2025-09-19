@@ -138,7 +138,7 @@
         <ul class="d-flex">
           <li><a href="catalogo">Catálogo</a></li>
           <li><a href="eventos">Eventos</a></li>
-          <li><a href="{{ url('/home') }}">EventOS</a></li>
+          <li><a href="{{ url('/home') }}">Eventos</a></li>
 
           @guest
               @if (Route::has('login'))
