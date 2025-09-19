@@ -141,7 +141,7 @@
 <<<<<<< Updated upstream
           <li><a href="eventos">Eventos</a></li>
 =======
-          <li><a href="{{ url('/home') }}">EventOS</a></li>
+          <li><a href="{{ url('/home') }}">Eventos</a></li>
 >>>>>>> Stashed changes
 
           @guest

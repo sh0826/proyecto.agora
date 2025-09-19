@@ -76,6 +76,51 @@
           border-radius: 10px;
           margin-bottom: 1rem;
         }
+        .producto {
+      background-color: #000000; /* fondo claro */
+      border: 2px solid #ffffff; /* borde rojo oscuro */
+      border-radius: 25px;
+      padding: 1rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 2px 8px rgba(5, 10, 5, 5.1);
+      display: flex;
+      
+    }
+
+    .producto:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 16px rgba(178, 58, 58, 0.985);
+    }
+
+    .producto img {
+      border-radius: 10px;
+      margin-bottom: 10px;
+      max-height: 260px;
+      object-fit: contain;
+    }
+
+    .producto p {
+      margin: 0.2rem 0;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+    }
+
+    .footer {
+      background-color: #000000;
+      padding: 1rem;
+      text-align: center;
+      color: white;
+      margin-top: 2rem;
+    }
+
+    .footer a {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    .footer a:hover {
+      color: #ffcccc;
+    }
     </style>
 
     <!-- Vite -->
@@ -91,7 +136,6 @@
       </div>
       <nav>
         <ul class="d-flex">
-          <li><a href="{{ url('/catalogo') }}">Catálogo</a></li>
           <li><a href="{{ url('/layouts/home.blade.php') }}">Eventos</a></li>
           <li><a href="{{ url('/conocenos') }}">Conócenos</a></li>
           <li><a href="{{ url('/reservaciones') }}">Reservacion </a></li>
@@ -113,6 +157,7 @@
 
   <main class="py-4 container">
       @yield('content')
+      
   </main>
 
   <footer class="footer">
