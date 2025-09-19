@@ -133,16 +133,16 @@
       <a href="{{ route('empleados.index') }}" class="active">
         <i class="bi bi-people-fill"></i> Empleados
       </a>
-      <a href="empleados.eventos.index">
+      <a href="eventos">
         <i class="bi bi-calendar-event-fill"></i> Eventos
       </a>
-      <a href="{{ route('empleados.reservaciones.index') }}">
-        <i class="bi bi-gear-fill"></i> reservaciones
+      <a href="{{ route('reservaciones.index') }}">
+        <i class="bi bi-gear-fill"></i> Reservaciones
       </a>
-      <a href="{{route('empleados.ventas.index')  }}">
+      <a href="ventas">
         <i class="bi bi-gear-fill">Ventas</i>
       </a>
-      <a href="{{ route('empleados.detalles.index') }}">
+      <a href="detalles">
         <i class="bi bi-gear-fill">detalles</ic>
       </a>
     </nav>

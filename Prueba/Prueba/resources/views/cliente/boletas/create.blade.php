@@ -5,15 +5,15 @@
     <form action="{{ route('boletas.store') }}" method="POST" class="p-4 bg-light rounded shadow-sm">
         @csrf  
         <div class="mb-3">
-            <label for="id" class="form-label">Usuario</label>
-            <select name="id" id="role" class="form-select" required>
-                @foreach($User as $usuario)
-                    <option value="{{ $usuario->role }}">
-                        {{ $usuario->name }} {{$usuario->role=="Cliente"}}  ({{ $usuario->numero_documento }})
-                    </option>
-                @endforeach
-            </select>
-        </div>
+    <label for="usuario_id" class="form-label">Usuario</label>
+    <select name="usuario_id" id="usuario_id" class="form-select" required>
+        @foreach($usuarios as $usuario)
+            <option value="{{ $usuario->id }}">
+                {{ $usuario->name }} {{ $usuario->apellido }} ({{ $usuario->numero_documento }})
+            </option>
+        @endforeach
+    </select>
+</div>
 
         
         <div class="mb-3">

@@ -26,30 +26,31 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Venta extends Model
 {
-	protected $table = 'venta';
-	protected $primaryKey = 'id_venta';
-	public $timestamps = false;
+    protected $table = 'venta';
+    protected $primaryKey = 'id_venta';
+    public $timestamps = false;
 
-	protected $casts = [
-		'fecha' => 'datetime',
-		'total' => 'float',
-		'id' => 'int'
-	];
+    protected $casts = [
+        'fecha' => 'datetime',
+        'total' => 'float',
+        'id' => 'int'   // este es el campo en venta que apunta al user
+    ];
 
-	protected $fillable = [
-		'fecha',
-		'total',
-		'metodo_pago',
-		'id'
-	];
+    protected $fillable = [
+        'fecha',
+        'total',
+        'metodo_pago',
+        'id'  // importante mantenerlo igual al campo de la tabla
+    ];
 
-	public function usuario()
-	{
-		return $this->belongsTo(User::class, 'id');
-	}
+    public function usuario()
+    {
+        // belongsTo(Model, foreign_key_en_venta, primary_key_en_user)
+        return $this->belongsTo(User::class, 'id', 'id');
+    }
 
-	public function detalle_venta()
-	{
-		return $this->hasMany(DetalleVenta::class, 'id_venta');
-	}
+    public function detalle_venta()
+    {
+        return $this->hasMany(DetalleVenta::class, 'id_venta');
+    }
 }
