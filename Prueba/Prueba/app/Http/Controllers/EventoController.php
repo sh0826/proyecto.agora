@@ -14,7 +14,11 @@ class EventoController extends Controller
         $eventos = Evento::all();
         return view('cliente.eventos.index', compact('eventos'));
     }
-
+   public function home()
+{
+    $eventos = Evento::all(); // traemos todos los eventos
+    return view('home', compact('eventos')); 
+}
     public function create()
     {
         return view('cliente.eventos.create');

@@ -1,6 +1,4 @@
-@extends('layouts.app2');
-
-@section('title', 'crear tu reserva')
+@extends('layouts.app2')
 
 @section('content')
 

@@ -1,5 +1,4 @@
 @extends('layouts.app2')
-@section('title', 'Lista de tus reservas!')
 
 @section('content')
 <div class="d-flex justify-content-between mb-3">
