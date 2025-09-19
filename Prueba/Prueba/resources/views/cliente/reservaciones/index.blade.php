@@ -16,8 +16,7 @@
             <th>Fecha de la reserva</th>
             <th>Ocasion</th>
             <th>Acciones</th>
-            
-    </tr>
+        </tr>
     </thead>
     <tbody>
     @foreach ($reservaciones as $reservacion)
@@ -37,7 +36,6 @@
         </form>
         </td>
     </tr>
-    
-    @endforeach
     </tbody>
+    @endforeach
 @endsection
