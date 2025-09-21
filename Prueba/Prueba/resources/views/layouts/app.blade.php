@@ -139,7 +139,6 @@
           <span style="font-size: 18px; font-weight: bold; color:red">
             {{ Auth::user()->name }} {{ Auth::user()->apellido }}
           </span>
-          <li><a href="{{ url('/eventos') }}">Eventos</a></li>
           <li><a href="{{ url('/reservaciones') }}">Reservaciones</a></li>
           <li><a href="{{ url('/boletas') }}">Boletas</a></li>
           <li>
