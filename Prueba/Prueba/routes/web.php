@@ -55,5 +55,8 @@ Route::get('/cliente/dashboard', function () {
     return view('cliente.dashboard');
 })->name('cliente.dashboard');
 
+Route::get('/home', function () {
+    return view('home');
+});
 // Empleado
 Route::get('/empleado/empl', [EmpleadoController::class, 'soloLectura'])->name('empleado.empl');

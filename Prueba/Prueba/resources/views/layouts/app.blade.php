@@ -136,9 +136,11 @@
       </div>
       <nav>
         <ul class="d-flex">
-          <li><a href="catalogo">Catálogo</a></li>
-
-          <li><a href="{{ url('/home') }}">EventOS</a></li>
+          <li><a href="{{ url('/catalogo') }}">Catálogo</a></li>
+          <li><a href="{{ url('/home') }}">Eventos</a></li>
+          <li><a href="{{ url('/conocenos') }}">Conócenos</a></li>
+          <li><a href="{{ url('/reservacion') }}">Reservacion </a></li>
+          <li><a href="{{ url('/boletas') }}">Boletas</a></li>
 
           @guest
               @if (Route::has('login'))

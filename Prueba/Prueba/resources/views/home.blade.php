@@ -4,7 +4,7 @@
 <div class="container mt-4">
     <h2 class="mb-4">Próximos Eventos</h2>
     <div class="row">
-        @foreach($eventos as $evento)
+        @foreach($evento as $evento)
             <div class="col-md-4 mb-3">
                 <div class="card h-100 shadow-sm">
                     @if($evento->imagen)
