@@ -12,7 +12,7 @@ class EventoController extends Controller
     public function index()
     {
         $eventos = Evento::all();
-        return view('empleados.eventos.index', compact('eventos'));
+        return view('layouts.eventos.index', compact('eventos'));
     }
     public function home()
 {
@@ -25,7 +25,7 @@ class EventoController extends Controller
         return view('empleados.eventos.create');
     }
        public function show (Evento $evento){
-        return view('empleados.eventos.show', compact('evento'));
+        return view('layouts.eventos.show', compact('evento'));
     }
 
     public function store(Request $request)

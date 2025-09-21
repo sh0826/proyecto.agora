@@ -10,6 +10,8 @@ use App\Http\Controllers\DetalleVentaControlador;
 use App\Http\Controllers\ProductoControlador;
 use App\Http\Controllers\reservacionControlador;
 use App\Http\Controllers\ventaControlador;
+
+
 // Página de bienvenida
 Route::get('/', function () {
     return view('welcome');
@@ -55,8 +57,6 @@ Route::get('/cliente/dashboard', function () {
     return view('cliente.dashboard');
 })->name('cliente.dashboard');
 
-Route::get('/home', function () {
-    return view('home');
-});
+
 // Empleado
 Route::get('/empleado/empl', [EmpleadoController::class, 'soloLectura'])->name('empleado.empl');
