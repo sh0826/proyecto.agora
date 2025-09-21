@@ -17,7 +17,7 @@ class Boleta extends Model
 
     public function evento()
     {
-        return $this->belongsTo(Evento::class, 'id_evento');
+        return $this->belongsTo(Evento::class, 'id_evento', 'id_evento');
     }
 
     public function User()

@@ -18,16 +18,16 @@ class BoletaController extends Controller
 
     public function create()
     {
-        $usuario = Auth::user();
+        $usuarios = Auth::user();
         $eventos = Evento::all();
-        return view('cliente.boletas.create', compact('usuario','eventos'));
+        return view('cliente.boletas.create', compact('usuarios','eventos'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
             'id' => 'required|exists:users,id',
-            'id_evento' => 'required|exists:eventos,id_evento',
+            'id_evento' => 'required|exists:evento,id_evento',
             'cantidad_boletos' => 'required|integer|min:1'
         ]);
 

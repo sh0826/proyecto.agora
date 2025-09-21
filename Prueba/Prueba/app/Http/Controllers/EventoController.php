@@ -12,19 +12,19 @@ class EventoController extends Controller
     public function index()
     {
         $eventos = Evento::all();
-        return view('cliente.eventos.index', compact('eventos'));
+        return view('cliente.eventos.index', compact('evento'));
     }
    public function home()
 {
     $eventos = Evento::all(); // traemos todos los eventos
-    return view('home', compact('eventos')); 
+    return view('home', compact('evento')); 
 }
     public function create()
     {
         return view('cliente.eventos.create');
     }
        public function show (Evento $evento){
-        return view('cliente.eventos.show', compact('evento'));
+        return view('cliente.eventos.show', compact('eventos'));
     }
 
     public function store(Request $request)

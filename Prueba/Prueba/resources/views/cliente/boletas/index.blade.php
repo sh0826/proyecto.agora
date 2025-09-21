@@ -25,8 +25,8 @@
             @foreach($boletas as $boleta)
             <tr>
                 <td>{{ $boleta->id_boleta }}</td>
-                <td>{{ $boleta->User->name }} ({{ $boleta->User->numero_documento }})</td>
-                <td>{{ $boleta->evento->nombre_evento }}</td>
+                <td>{{ $boleta->user->name }} ({{ $boleta->User->numero_documento }})</td>
+                <td>{{ $boleta->eventos->nombre_evento }}</td>
                 <td>{{ $boleta->cantidad_boletos }}</td>
                 <td>$ {{ number_format($boleta->evento->precio_boleta, 2) }}</td>
                 <td>$ {{ number_format($boleta->cantidad_boletos * $boleta->evento->precio_boleta, 2) }}</td>
