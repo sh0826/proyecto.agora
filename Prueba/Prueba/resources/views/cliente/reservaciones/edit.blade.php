@@ -1,5 +1,5 @@
 @extends('layouts.app2')
-@section('title', 'Edita tu reservacion')
+
 
 @section('content')
 <h1 class="h4 mb-3">Editar tu reserva</h1>

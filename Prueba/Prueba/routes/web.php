@@ -44,11 +44,15 @@ Route::resource('reservaciones', reservacionControlador::class)
 ->parameters(['reservaciones'=>'reservacion']);
 
 Route::resource('productos',ProductoControlador::class);
+
 Route::resource('eventos', EventoController::class);
+
 Route::resource('boletas', BoletaController::class);
+
 Route::get('/catalogo', function(){
     return view('catalogo');
 });
+Route::get('/home', [EventoController::class, 'home'])->name('home');
 // Cliente
 Route::get('/cliente/dashboard', function () {
     return view('cliente.dashboard');
