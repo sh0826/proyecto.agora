@@ -12,19 +12,20 @@ class EventoController extends Controller
     public function index()
     {
         $eventos = Evento::all();
-        return view('cliente.eventos.index', compact('evento'));
+        return view('empleados.eventos.index', compact('eventos'));
     }
-   public function home()
+    public function home()
 {
     $eventos = Evento::all(); // traemos todos los eventos
     return view('home', compact('evento')); 
 }
+
     public function create()
     {
-        return view('cliente.eventos.create');
+        return view('empleados.eventos.create');
     }
        public function show (Evento $evento){
-        return view('cliente.eventos.show', compact('eventos'));
+        return view('empleados.eventos.show', compact('evento'));
     }
 
     public function store(Request $request)
@@ -54,7 +55,7 @@ class EventoController extends Controller
     public function edit($id)
     {
         $evento = Evento::findOrFail($id);
-        return view('cliente.eventos.edit', compact('evento'));
+        return view('empleados.eventos.edit', compact('evento'));
     }
 
 

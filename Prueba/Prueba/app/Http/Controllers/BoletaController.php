@@ -16,25 +16,37 @@ class BoletaController extends Controller
         return view('cliente.boletas.index', compact('boletas'));
     }
 
-    public function create()
+     public function create()
     {
-        $usuarios = Auth::user();
+        // Clientes
+        $usuarios = User::where('role', 'Cliente')->get();
+
+        // Eventos
         $eventos = Evento::all();
-        return view('cliente.boletas.create', compact('usuarios','eventos'));
+
+        return view('cliente.boletas.create', compact('usuarios', 'eventos'));
     }
 
     public function store(Request $request)
     {
-        $request->validate([
-            'id' => 'required|exists:users,id',
-            'id_evento' => 'required|exists:evento,id_evento',
-            'cantidad_boletos' => 'required|integer|min:1'
-        ]);
+         // Validar datos
+    $request->validate([
+        'id_evento' => 'required|exists:evento,id_evento',
+        'id_usuario' => 'required|exists:users,id',
+        'cantidad' => 'required|integer|min:1',
+    ]);
 
-        Boleta::create($request->all());
-        return redirect()->route('boletas.index')->with('success','Boleta creada correctamente.');
-    }
 
+    // Guardar boleta
+    Boleta::create([
+        'id_evento'   => $request->id_evento,
+        'id_usuario'  => $request->id,
+        'cantidad'    => $request->cantidad,
+        'precio_boleta'=> $request->precio_boleta,
+    ]);
+
+    return redirect()->route('boletas.index')->with('success', 'Boleta creada correctamente 🎉');
+}
     public function edit(Boleta $boleta)
     {
         $usuarios = User::all();
@@ -46,7 +58,7 @@ class BoletaController extends Controller
     {
         $request->validate([
             'id' => 'required|exists:users,id',
-            'id_evento' => 'required|exists:eventos,id_evento',
+            'id_evento' => 'required|exists:evento,id_evento',
             'cantidad_boletos' => 'required|integer|min:1'
         ]);
 

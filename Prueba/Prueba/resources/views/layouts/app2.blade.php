@@ -136,7 +136,7 @@
       </div>
       <nav>
         <ul class="d-flex">
-          <li><a href="{{ url('/eventos') }}">Eventos</a></li>
+          
           <li><a href="{{ url('/conocenos') }}">Conócenos</a></li>
           <li><a href="{{ url('/reservaciones') }}">Reservacion </a></li>
           <li><a href="{{ url('/boletas') }}">Boletas</a></li>

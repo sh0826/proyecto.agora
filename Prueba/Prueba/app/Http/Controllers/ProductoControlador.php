@@ -14,11 +14,15 @@ class ProductoControlador extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $productos = Producto::all();
-        return view('empleados.productos.index', compact('productos'));
-    }
+{
+    $productos = Producto::all();
 
+    if (auth()->user()->hasRole('empleado')) {
+        return view('empleados.productos.index', compact('productos'));
+    } else {
+        return view('empleado.productos.index', compact('productos'));
+    }
+}
     /**
      * Show the form for creating a new resource.
      */

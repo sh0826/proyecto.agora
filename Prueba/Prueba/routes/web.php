@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -10,6 +11,10 @@ use App\Http\Controllers\DetalleVentaControlador;
 use App\Http\Controllers\ProductoControlador;
 use App\Http\Controllers\reservacionControlador;
 use App\Http\Controllers\ventaControlador;
+
+
+
+
 // Página de bienvenida
 Route::get('/', function () {
     return view('welcome');
@@ -34,19 +39,11 @@ Route::get('/admin/dashboard', function () {
 
 // CRUD de empleados
 Route::resource('empleados', EmpleadoController::class);
-Route::prefix('empleados')->name('empleados.')->group(function (){
-Route::resource('detalles',DetalleVentaControlador::class);});
-Route::prefix('empleados')->name('empleados.')->group(function (){
-    Route::resource('ventas',ventaControlador::class);
-});
-
+Route::resource('productos',ProductoControlador::class);
+Route::resource('ventas', ventaControlador::class);
 Route::resource('reservaciones', reservacionControlador::class)
 ->parameters(['reservaciones'=>'reservacion']);
-
-Route::resource('productos',ProductoControlador::class);
-
 Route::resource('eventos', EventoController::class);
-
 Route::resource('boletas', BoletaController::class);
 
 Route::get('/catalogo', function(){

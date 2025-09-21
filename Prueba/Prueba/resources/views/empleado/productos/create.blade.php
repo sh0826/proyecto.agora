@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.Empleado')
 
 @section('content')
     <h1>Registrar nuevo producto</h1>

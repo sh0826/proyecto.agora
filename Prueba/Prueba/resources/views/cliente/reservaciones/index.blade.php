@@ -1,6 +1,7 @@
 @extends('layouts.app2')
 
 @section('content')
+  
 <div class="d-flex justify-content-between mb-3">
     <h1 class="h4">Reservaciones</h1>
     <a href="{{ route('reservaciones.create') }}" class="btn btn-primary">Nuevo</a>

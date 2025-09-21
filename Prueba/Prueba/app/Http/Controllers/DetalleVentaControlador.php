@@ -4,95 +4,82 @@ namespace App\Http\Controllers;
 
 use App\Models\DetalleVenta;
 use App\Models\Venta;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Htto\RedirectResponse;
-use Illuminate\Views\Views;
-
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class DetalleVentaControlador extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function porVenta ($ventaId){
+    public function porVenta($ventaId): View
+    {
         $venta = Venta::findOrFail($ventaId);
         $detalles = DetalleVenta::where('id_venta', $ventaId)->get();
-        return view ('detalles.porVenta', compact('venta', 'detalles'));
+        return view('detalles.porVenta', compact('venta', 'detalles'));
     }
 
-    public function index()
+    public function index(): View
     {
         $detalleVenta = DetalleVenta::all();
-        return view ('detalles.index', compact('detalleVenta'));
+        return view('empleados.detalles.index', compact('detalleVenta'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function create(): View
     {
-        return view ('detalles.create');
+        return view('empleados.detalles.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        $validated=$request->validate([
-            'id_venta'=>'required|exists:venta,id_venta',
-            'id_producto'=>'required|exists:producto,id_producto',
-            'descripcion'=>'required|string',
-            'cantidad_productos'=>'required|numeric|min:0',
-            'precio_unitario'=>'required|numeric|min:0'
+        $validated = $request->validate([
+            'id_venta' => 'required|exists:ventas,id_venta',
+            'id_producto' => 'required|exists:productos,id_producto',
+            'descripcion' => 'required|string',
+            'cantidad_productos' => 'required|numeric|min:0',
+            'precio_unitario' => 'required|numeric|min:0'
         ]);
 
-        DetalleVenta::create($validated);
-        return redirect()->route('detalles.porVenta', ['venta'=>$detalle->venta->id_venta])->with('success','Detalle de venta
-        eliminado correctamente.');
+        $detalle = DetalleVenta::create($validated);
+
+        return redirect()
+            ->route('detalles.porVenta', ['venta' => $detalle->id_venta])
+            ->with('success', 'Detalle de venta creado correctamente.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show(string $id): View
     {
-        return view ('detalles.show', compact('detalleVenta'));
+        $detalleVenta = DetalleVenta::findOrFail($id);
+        return view('detalles.show', compact('detalleVenta'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(DetalleVenta $detalle)
+    public function edit(DetalleVenta $detalle): View
     {
-        return view ('detalles.edit', compact('detalle'));
+        return view('empleados.detalles.edit', compact('detalle'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, DetalleVenta $detalle)
+    public function update(Request $request, DetalleVenta $detalle): RedirectResponse
     {
-            $validated=$request->validate([
-            'id_venta'=>'required|exists:venta,id_venta',
-            'id_producto'=>'required|exists:producto,id_producto',
-            'descripcion'=>'required|string',
-            'cantidad_productos'=>'required|numeric|min:0',
-            'precio_unitario'=>'required|numeric|min:0'
+        $validated = $request->validate([
+            'id_venta' => 'required|exists:ventas,id_venta',
+            'id_producto' => 'required|exists:productos,id_producto',
+            'descripcion' => 'required|string',
+            'cantidad_productos' => 'required|numeric|min:0',
+            'precio_unitario' => 'required|numeric|min:0'
         ]);
+
         $detalle->update($validated);
-        return redirect()->route('detalles.porVenta', ['venta'=>$detalle->venta->id_venta] )->with('success','Detalle de venta
-        actualizado exitosamente.');
+
+        return redirect()
+            ->route('detalles.porVenta', ['venta' => $detalle->id_venta])
+            ->with('success', 'Detalle de venta actualizado exitosamente.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(DetalleVenta $detalle)
+    public function destroy(DetalleVenta $detalle): RedirectResponse
     {
+        $ventaId = $detalle->id_venta;
         $detalle->delete();
-        return redirect()->route('detalles.porVenta', ['venta'=>$detalle->venta->id_venta])->with('success','Detalle de venta
-        eliminado correctamente.');
+
+        return redirect()
+            ->route('detalles.porVenta', ['venta' => $ventaId])
+            ->with('success', 'Detalle de venta eliminado correctamente.');
     }
 }

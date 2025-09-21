@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('title', 'crear tu reserva')
 
@@ -19,8 +19,8 @@
 <form action="{{ route('ventas.store') }}" method="POST">
     @csrf
     <div class="mb-3">
-    <label for="id_usuario" class="form-label">ID Usuario</label>
-    <input type="number" class="form-control" id="id_usuario" name="id_usuario" value="{{ old('id_usuario') }}" required>
+    <label for="id" class="form-label">ID Usuario</label>
+    <input type="number" class="form-control" id="id" name="id" value="{{ old('id') }}">
 </div>
     <div class="mb-3">
         <label for="total" class="form-label">Total</label>

@@ -131,15 +131,12 @@
 
     <nav>
       <a href="{{ route('empleados.index') }}" class="active">
-        <i class="bi bi-people-fill"></i> Empleados
+        <ic class="bi bi-people-fill"></ic> Empleados
       </a>
       <a href="eventos">
-        <i class="bi bi-calendar-event-fill"></i> Eventos
+        <ic class="bi bi-calendar-event-fill"></ic> Eventos
       </a>
-      
-      <a href="ventas">
-        <ic class="bi bi-gear-fill">Ventas</ic>
-      </a>
+     
       <a href="productos">
         <i class="bi bi-gear-fill">Productos</ic>
       </a>

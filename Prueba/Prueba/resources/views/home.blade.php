@@ -1,4 +1,4 @@
-@extends('layouts.app2')
+@extends('layouts.app')
 
 @section('content')
 <div class="container mt-4">
@@ -15,8 +15,9 @@
                         <p class="card-text">
                             Fecha: {{ $evento->fecha }} <br>
                             Hora: {{ $evento->hora_inicio }}
+                            <br>
+                            Descripcion: {{ $evento->descripcion }}
                         </p>
-                        <a href="#" class="btn btn-primary">Ver más</a>
                     </div>
                 </div>
             </div>

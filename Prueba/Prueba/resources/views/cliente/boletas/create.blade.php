@@ -8,15 +8,15 @@
 
         <!-- Selección de Usuario -->
         <div class="mb-3">
-            <label for="usuario_id" class="form-label">Usuario</label>
-            <select name="usuario_id" id="usuario_id" class="form-select" required>
-                @foreach($usuarios as $usuario)
-                    <option value="{{ $usuario->id }}">
-                        {{ $usuario->name }} @if($usuario->role == "Cliente") (Cliente) @endif
-                    </option>
-                @endforeach
-            </select>
-        </div>
+    <label for="usuario_id" class="form-label">Usuario</label>
+    <select name="usuario_id" id="usuario_id" class="form-select" required>
+        @foreach($usuarios as $usuario)
+            <option value="{{ $usuario->id }}">
+                {{ $usuario->name }} {{ $usuario->apellido }} ({{ $usuario->numero_documento }})
+            </option>
+        @endforeach
+    </select>
+</div>
 
         <!-- Selección de Evento -->
         <div class="mb-3">

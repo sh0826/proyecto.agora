@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\venta;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ventaControlador extends Controller
@@ -13,8 +14,8 @@ class ventaControlador extends Controller
     public function index()
     {
         {
-        $ventas=Venta::all();
-        return view('ventas.index',compact('ventas'));
+         $ventas = Venta::with('usuario')->get();
+    return view('empleados.ventas.index', compact('ventas'));
         //lista del producto
     }
         //
@@ -26,7 +27,7 @@ class ventaControlador extends Controller
     public function create()
     {
         //formulario donde estan los campos a registrar
-        return view('ventas.create');
+        return view('empleados.ventas.create');
     }
 
     /**
@@ -39,7 +40,7 @@ class ventaControlador extends Controller
     $validated = $request->validate([
         'total' => 'required|numeric|min:0',
         'metodo_pago' => 'required|in:efectivo,tarjeta,transferencia',
-        'id_usuario' => 'required|integer', // o auth()->id() si el usuario logueado hace la venta
+        'id' => 'required|integer', // o auth()->id() si el usuario logueado hace la venta
     ]);
 
    Venta::create($validated);
@@ -96,4 +97,5 @@ class ventaControlador extends Controller
     }
     
 }
+
 
