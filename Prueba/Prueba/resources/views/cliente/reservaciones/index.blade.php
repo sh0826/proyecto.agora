@@ -10,7 +10,6 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>ID del usuario</th>
             <th>Nombre</th>
             <th>Cantidad personas</th>
             <th>Cantidad de mesas</th>

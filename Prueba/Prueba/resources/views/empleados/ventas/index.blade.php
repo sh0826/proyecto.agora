@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 @section('title', 'Lista de tus reservas!')
 
 @section('content')
@@ -26,11 +26,11 @@
         <td>{{ $venta->fecha }}</td>
         <td>{{ $venta->total}}</td>
         <td>{{ $venta->metodo_pago }}</td>
-        <td>{{ $venta->id }}</td>
-        <td>{{ $venta->usuario?->name }} - {{ $venta->usuario?->numero_documento }}</td>
+        <td>{{ $venta->id_usuario }}</td>
+        <td>{{ $venta->usuario->nombre }} - {{ $venta->usuario->cedula }}</td>
 
         <td class="text-end">
-            <a href="{{ route('detalles',$venta)}}" class="btn btn-info">Ver</a>
+            <a href="{{ route('detalles.porVenta',$venta)}}" class="btn btn-info">Ver</a>
             <a href="{{ route('ventas.edit',$venta) }}" class="btn btn-warning">Editar</a>
             <form action="{{ route('ventas.destroy',$venta) }}" method="post" class="d-inline">
         @csrf @method('DELETE')

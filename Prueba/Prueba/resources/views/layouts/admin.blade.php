@@ -133,15 +133,17 @@
       <a href="{{ route('empleados.index') }}" class="active">
         <i class="bi bi-people-fill"></i> Empleados
       </a>
-      <a href="eventos">
+      <a href="empleados.eventos.index">
         <i class="bi bi-calendar-event-fill"></i> Eventos
       </a>
-      
-      <a href="ventas">
-        <ic class="bi bi-gear-fill">Ventas</ic>
+      <a href="{{ route('empleados.reservaciones.index') }}">
+        <i class="bi bi-gear-fill"></i> reservaciones
       </a>
-      <a href="productos">
-        <i class="bi bi-gear-fill">Productos</ic>
+      <a href="{{route('empleados.ventas.index')  }}">
+        <i class="bi bi-gear-fill">Ventas</i>
+      </a>
+      <a href="{{ route('empleados.detalles.index') }}">
+        <i class="bi bi-gear-fill">detalles</ic>
       </a>
     </nav>
 
@@ -151,7 +153,7 @@
   </p>
   <small class="text-secondary">Administrador</small>
 </div>
-      <a href="{{ route('logout') }}" class="btn btn-primary mt-3"
+      <a href="{{ route('logout') }}" class="btn btn-logout mt-3"
          onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
          <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
       </a>

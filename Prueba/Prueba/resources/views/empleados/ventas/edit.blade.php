@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 @section('title', 'Edita tu reservacion')
 
 @section('content')
