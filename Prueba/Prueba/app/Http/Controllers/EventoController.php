@@ -7,25 +7,27 @@ use Illuminate\Http\Request;
 
 class EventoController extends Controller
 {
-
+    
 
     public function index()
     {
         $eventos = Evento::all();
-        return view('layouts.eventos.index', compact('eventos'));
-    }
-    public function home()
-{
-    $eventos = Evento::all(); // traemos todos los eventos
-    return view('home', compact('evento')); 
-}
+        return redirect()->route('cliente.eventos.index')->with('success', 'Evento creado con éxito');
 
+    }
+  
+
+    public function mostrarEventos()
+{
+    $eventos = Evento::all(); // Trae todos los eventos
+    return view('home', compact('eventos')); // Pasa los eventos a la vista
+}
     public function create()
     {
         return view('empleados.eventos.create');
     }
        public function show (Evento $evento){
-        return view('layouts.eventos.show', compact('evento'));
+        return view('cliente.eventos.show', compact('evento'));
     }
 
     public function store(Request $request)
@@ -48,14 +50,14 @@ class EventoController extends Controller
 
         Evento::create($data);
 
-        return redirect()->route('eventos.index')->with('success', 'Evento creado con éxito');
+        return redirect()->route('cliente.eventos.index')->with('success', 'Evento creado con éxito');
     }
 
 
     public function edit($id)
     {
         $evento = Evento::findOrFail($id);
-        return view('empleados.eventos.edit', compact('evento'));
+        return view('cliente.eventos.edit', compact('evento'));
     }
 
 
@@ -87,7 +89,7 @@ class EventoController extends Controller
 
     $evento->update($data);
 
-    return redirect()->route('eventos.index')->with('success', 'Evento actualizado correctamente');
+    return redirect()->route('cliente.eventos.index')->with('success', 'Evento actualizado correctamente');
 }
 
 

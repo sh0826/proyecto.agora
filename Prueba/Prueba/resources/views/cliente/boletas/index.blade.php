@@ -1,4 +1,4 @@
-@extends('layouts.app2')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -9,7 +9,7 @@
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
-    <table class="table table-">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>ID</th>
@@ -25,11 +25,28 @@
             @foreach($boletas as $boleta)
             <tr>
                 <td>{{ $boleta->id_boleta }}</td>
-                <td>{{ $boleta->user->name }} ({{ $boleta->User->numero_documento }})</td>
-                <td>{{ $boleta->eventos->nombre_evento }}</td>
+
+                {{-- Usuario --}}
+                <td>
+                    {{ $boleta->user?->name ?? 'Usuario no asignado' }}
+                    ({{ $boleta->user?->numero_documento ?? '-' }})
+                </td>
+
+                {{-- Evento --}}
+                <td>
+                    {{ $boleta->evento?->nombre_evento ?? 'Evento no asignado' }}
+                </td>
+
+                {{-- Cantidad --}}
                 <td>{{ $boleta->cantidad_boletos }}</td>
-                <td>$ {{ number_format($boleta->evento->precio_boleta, 2) }}</td>
-                <td>$ {{ number_format($boleta->cantidad_boletos * $boleta->evento->precio_boleta, 2) }}</td>
+
+                {{-- Precio Unitario --}}
+                <td>$ {{ number_format($boleta->evento?->precio_boleta ?? 0, 2) }}</td>
+
+                {{-- Total --}}
+                <td>$ {{ number_format($boleta->cantidad_boletos * ($boleta->evento?->precio_boleta ?? 0), 2) }}</td>
+
+                {{-- Acciones --}}
                 <td>
                     <a href="{{ route('boletas.edit', ['boleta' => $boleta->id_boleta]) }}" class="btn btn-dark btn-sm">Editar</a>
                     <form action="{{ route('boletas.destroy', ['boleta' => $boleta->id_boleta]) }}" method="POST" style="display:inline;">
@@ -44,4 +61,5 @@
     </table>
 </div>
 @endsection
+
 

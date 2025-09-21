@@ -11,7 +11,6 @@ use App\Http\Controllers\ProductoControlador;
 use App\Http\Controllers\reservacionControlador;
 use App\Http\Controllers\ventaControlador;
 
-
 // Página de bienvenida
 Route::get('/', function () {
     return view('welcome');
@@ -38,7 +37,7 @@ Route::get('/admin/dashboard', function () {
 Route::resource('empleados', EmpleadoController::class);
 Route::prefix('empleados')->name('empleados.')->group(function (){
 Route::resource('detalles',DetalleVentaControlador::class);});
-Route::prefix('empleados')->name('empleados.')->group(function (){
+Route::prefix('empleados')->name('empleados.')->group(function (){ 
     Route::resource('ventas',ventaControlador::class);
 });
 
@@ -49,6 +48,9 @@ Route::prefix('empleados')->name('empleados.')->group(function () {
 Route::resource('productos',ProductoControlador::class);
 Route::resource('eventos', EventoController::class);
 Route::resource('boletas', BoletaController::class);
+Route::resource('reservaciones', reservacionControlador::class);
+
+
 Route::get('/catalogo', function(){
     return view('catalogo');
 });
@@ -57,6 +59,13 @@ Route::get('/cliente/dashboard', function () {
     return view('cliente.dashboard');
 })->name('cliente.dashboard');
 
-
 // Empleado
 Route::get('/empleado/empl', [EmpleadoController::class, 'soloLectura'])->name('empleado.empl');
+Route::get('/eventos', [EventoController::class, 'mostrarEventos'])->name('eventos.publico');
+Route::prefix('cliente')->name('cliente.')->middleware('auth')->group(function () {
+
+    Route::get('/dashboard', function () {
+        return view('cliente.dashboard');
+    })->name('dashboard');
+
+});

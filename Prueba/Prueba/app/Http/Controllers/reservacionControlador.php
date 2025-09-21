@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use function PHPUnit\Framework\returnArgument;
+use Illuminate\Support\Facades\Auth; 
 
 class reservacionControlador extends Controller
 {
@@ -15,7 +16,7 @@ class reservacionControlador extends Controller
      */
     public function index()
     {
-        $reservaciones=Reservacion::all();
+        $reservaciones = Reservacion::where('id', Auth::id())->get();
         return view('cliente.reservaciones.index',compact('reservaciones'));
         //lista del producto
     }
@@ -34,18 +35,28 @@ class reservacionControlador extends Controller
      */
     public function store(Request $request)
 {
-    $validated = $request->validate([
-        'id' => 'required|integer',
-        'cantidad_personas' => 'required|integer|min:1',
-        'cantidad_mesas' => 'required|integer|min:1',
+    $request->validate([
+        'cantidad_personas' => 'required|integer',
+        'cantidad_mesas' => 'required|integer',
         'fecha_reservacion' => 'required|date',
-        'ocasion' => 'nullable|string|max:100',
+        'ocasion' => 'nullable|string',
     ]);
 
- Reservacion::create($validated);
-        return redirect()->route('reservaciones.index')->
-        with('success','registro exitoso de la venta');
-    }
+    // Crear la nueva reservación
+    $reservacion = new Reservacion();
+
+    // Asignar propiedades
+    $reservacion->id = Auth::id();  // usuario autenticado
+    $reservacion->cantidad_personas = $request->cantidad_personas;
+    $reservacion->cantidad_mesas = $request->cantidad_mesas;
+    $reservacion->fecha_reservacion = $request->fecha_reservacion;
+    $reservacion->ocasion = $request->ocasion;
+
+    // Guardar en la base de datos
+    $reservacion->save();
+
+    return redirect()->route('reservaciones.index')->with('success', 'Reservación creada correctamente');
+}
 
     /**
      * Display the specified resource.
