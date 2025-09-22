@@ -36,7 +36,7 @@ class reservacionControlador extends Controller
     public function store(Request $request)
 {
     $request->validate([
-        'id_usuario' => 'required',
+        'id' => 'required',
         'cantidad_personas' => 'required|integer',
         'cantidad_mesas' => 'required|integer',
         'fecha_reservacion' => 'required|date',

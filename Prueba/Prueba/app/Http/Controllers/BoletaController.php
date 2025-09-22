@@ -31,19 +31,19 @@ class BoletaController extends Controller
     {
          // Validar datos
     $request->validate([
-        'id_evento' => 'required|exists:evento,id_evento',
-        'id_usuario' => 'required|exists:users,id',
-        'cantidad' => 'required|integer|min:1',
-    ]);
+    'id_evento' => 'required|exists:evento,id_evento', // singular, coincide con tu tabla
+    'id_usuario' => 'required|exists:users,id',
+    'cantidad_boletos' => 'required|integer|min:1',
+]);
+$boleta->update($request->only('id_usuario', 'id_evento', 'cantidad_boletos'));
 
 
     // Guardar boleta
-    Boleta::create([
-        'id_evento'   => $request->id_evento,
-        'id_usuario'  => $request->id,
-        'cantidad'    => $request->cantidad,
-        'precio_boleta'=> $request->precio_boleta,
-    ]);
+   Boleta::create([
+    'id_evento'   => $request->id_evento,
+    'id_usuario'  => $request->id_usuario, // o Auth::id() si quieres el usuario logueado
+    'cantidad_boletos' => $request->cantidad_boletos,
+]);
 
     return redirect()->route('boletas.index')->with('success', 'Boleta creada correctamente 🎉');
 }
