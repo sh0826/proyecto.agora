@@ -20,23 +20,34 @@
     </thead>
     <tbody>
         @foreach ($reservaciones as $reservacion)
-        <tr>
-            
-            <td>{{ $reservacion->user?->name ?? 'Usuario no asignado' }}</td>
-            <td>{{ $reservacion->cantidad_personas }}</td>
-            <td>{{ $reservacion->cantidad_mesas }}</td>
-            <td>{{ $reservacion->fecha_reservacion }}</td>
-            <td>{{ $reservacion->ocasion }}</td>
-            <td>
-                <a href="{{ route('reservaciones.show',$reservacion)}}" class="btn btn-dark">Ver</a>
-                <a href="{{ route('reservaciones.edit',$reservacion) }}" class="btn btn-danger">Editar</a>
-                <form action="{{ route('reservaciones.destroy',$reservacion) }}" method="post" class="d-inline">
-                    @csrf @method('DELETE')
-                    <button class="btn btn btn-secondary" onclick="return confirm('Eliminar producto')">Eliminar</button>    
-                </form>
-            </td>
-        </tr>
-        @endforeach
+<tr>
+    {{-- Usuario logueado --}}
+    <td>{{ Auth::user()->name ?? 'Usuario no asignado' }}</td>
+
+    {{-- Cantidad personas --}}
+    <td>{{ $reservacion->cantidad_personas }}</td>
+
+    {{-- Cantidad mesas --}}
+    <td>{{ $reservacion->cantidad_mesas }}</td>
+
+    {{-- Fecha --}}
+    <td>{{ $reservacion->fecha_reservacion }}</td>
+
+    {{-- Ocasion --}}
+    <td>{{ $reservacion->ocasion }}</td>
+
+    {{-- Acciones --}}
+    <td>
+        <a href="{{ route('reservaciones.show',$reservacion)}}" class="btn btn-dark">Ver</a>
+        <a href="{{ route('reservaciones.edit', $reservacion->id_reservacion) }}" class="btn btn-danger">Editar</a>
+        <form action="{{ route('reservaciones.destroy',$reservacion) }}" method="post" class="d-inline">
+            @csrf @method('DELETE')
+            <button class="btn btn-secondary" onclick="return confirm('Eliminar reservacion?')">Eliminar</button>    
+        </form>
+    </td>
+</tr>
+@endforeach
+
     </tbody>
 </table>
 @endsection

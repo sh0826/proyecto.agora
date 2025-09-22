@@ -45,7 +45,9 @@
             <input type="number" name="cantidad_boletos" id="cantidad_boletos" class="form-control" min="1" required>
         </div>
 
-        <button type="submit" class="btn btn-primary w-100">Guardar Boleta</button>
+        <button type="submit" class="btn btn-danger">Guardar Boleta</button>
+  
+        <a href="{{ route('boletas.index') }}" class="btn btn-secondary">Cancelar</a>
     </form>
 </div>
 

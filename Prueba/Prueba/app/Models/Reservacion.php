@@ -43,9 +43,12 @@ class Reservacion extends Model
 		'fecha_reservacion',
 		'ocasion'
 	];
-
-	public function User()
-	{
-		return $this->belongsTo(User::class, 'id');	
-	}
+public function getRouteKeyName()
+{
+    return 'id_reservacion';
+}
+	public function user()
+    {
+        return $this->belongsTo(User::class, 'id', 'id');
+    }
 }

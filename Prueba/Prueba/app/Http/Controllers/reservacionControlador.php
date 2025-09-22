@@ -36,6 +36,7 @@ class reservacionControlador extends Controller
     public function store(Request $request)
 {
     $request->validate([
+        'id_usuario' => 'required',
         'cantidad_personas' => 'required|integer',
         'cantidad_mesas' => 'required|integer',
         'fecha_reservacion' => 'required|date',
@@ -79,34 +80,37 @@ public function edit(Reservacion $reservacion)
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, reservacion $reservacion)
-    {
-        {
-    // Validación de los campos que sí llena el cliente
-    $validated = $request->validate([
-        'id' => 'required|integer',
+    public function update(Request $request, Reservacion $reservacion)
+{
+    // Validación de los campos que sí existen
+    $request->validate([
+        'id' => 'required|exists:users,id',
         'cantidad_personas' => 'required|integer|min:1',
         'cantidad_mesas' => 'required|integer|min:1',
         'fecha_reservacion' => 'required|date',
-        'ocasion' => 'nullable|string|max:100',
+        'ocasion' => 'required|string|max:255',
     ]);
 
-    // Crear la reservación asignando el usuario autenticado
+    // Actualizar solo los campos permitidos
+    $reservacion->update($request->only([
+        'id',
+        'cantidad_personas',
+        'cantidad_mesas',
+        'fecha_reservacion',
+        'ocasion'
+    ]));
 
-
-   $reservacion->update($validated);
-        return redirect()->route('reservaciones.index')->
-        with('success','registro actualizado de la venta');}
-        //boton de actualizar en el formulario
-    }
+    return redirect()->route('reservaciones.index')->with('success', 'Reservación actualizada correctamente');
+}
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(reservacion $reservacion)
+    public function destroy(Reservacion $reservacion)
     {
         $reservacion->delete();
-        return redirect()->route('reservaciones.index')->whit('sucess', 'reservacion eliminada correctamente');
+        return redirect()->route('reservaciones.index')->with('success', 'Reservación eliminada correctamente');
+
         //eliminar
     }
 }

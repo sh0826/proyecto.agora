@@ -6,18 +6,10 @@
         @csrf
         @method('PUT')
         <div class="mb-3">
-            <label for="id_usuario" class="form-label">Usuario</label>
-            <select name="id_usuario" id="id_usuario" class="form-select">
-    @foreach($usuarios as $usuario)
-        <option value="{{ $usuario->id_usuario }}"
-            {{ $usuario->id_usuario == $boleta->id_usuario ? 'selected' : '' }}>
-            {{ $usuario->nombre }}
-        </option>
-    @endforeach
-</select>
+            <label for="id" class="form-label">ID Usuario</label>
+            <input type="text" class="form-control" value="{{ Auth::user()->name }}" disabled>
+            <input type="hidden" name="id" value="{{ Auth::id() }}">
         </div>
-
-        
         <div class="mb-3">
             <label for="id_evento" class="form-label">Evento</label>
             <select name="id_evento" id="id_evento" class="form-select" required>
@@ -30,14 +22,12 @@
                 @endforeach
             </select>
         </div>
-
         
         <div class="mb-3">
             <label for="precio" class="form-label">Precio por Boleta</label>
             <input type="text" id="precio" class="form-control" value="{{ $boleta->evento->precio_boleta ?? '' }}" readonly>
         </div>
 
-        
         <div class="mb-3">
             <label for="cantidad_boletos" class="form-label">Cantidad</label>
             <input type="number" name="cantidad_boletos" id="cantidad_boletos" 

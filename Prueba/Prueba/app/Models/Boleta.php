@@ -13,16 +13,16 @@ class Boleta extends Model
     public $timestamps = false;
     protected $table = 'boleta'; 
     protected $primaryKey = 'id_boleta';
-    protected $fillable = ['id', 'id_evento', 'cantidad_boletos'];
+    protected $fillable = ['id_usuario', 'id_evento', 'cantidad_boletos'];
 
     public function evento()
     {
         return $this->belongsTo(Evento::class, 'id_evento', 'id_evento');
     }
 
-    public function User()
+    public function user()
     {
-        return $this->belongsTo(User::class, 'id');
+       return $this->belongsTo(User::class, 'id_usuario', 'id'); 
     }
 }
 	

@@ -136,7 +136,7 @@
       </div>
       <nav> 
         <ul class="d-flex">
-          <span style="font-size: 18px; font-weight: bold; color:red">
+          <span style="font-size: 18px; font-weight: bold; color:gray">
             {{ Auth::user()->name }} {{ Auth::user()->apellido }}
           </span>
           <li><a href="{{ url('/reservaciones') }}">Reservaciones</a></li>

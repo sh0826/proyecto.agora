@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Boleta;
+use App\Models\Evento;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -62,12 +63,12 @@ class BoletaController extends Controller
         ]);
 
         $boleta->update($request->all());
-        return redirect()->route('cliente.boletas.index')->with('success','Boleta actualizada correctamente.');
+        return redirect()->route('boletas.index')->with('success','Boleta actualizada correctamente.');
     }
 
     public function destroy(Boleta $boleta)
     {
         $boleta->delete();
-        return redirect()->route('cliente.boletas.index')->with('success','Boleta eliminada correctamente.');
+        return redirect()->route('boletas.index')->with('success','Boleta eliminada correctamente.');
     }
 }

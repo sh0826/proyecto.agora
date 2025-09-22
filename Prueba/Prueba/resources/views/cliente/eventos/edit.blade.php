@@ -35,4 +35,3 @@
         <a href="{{ route('eventos.index') }}" class="btn btn-secondary">Cancelar</a>
     </form>
 </div>
-@endsection
