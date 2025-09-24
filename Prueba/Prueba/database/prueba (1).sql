@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-09-2025 a las 03:00:47
+-- Tiempo de generación: 24-09-2025 a las 02:29:55
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -31,8 +31,8 @@ CREATE TABLE `boleta` (
   `id_boleta` int(11) NOT NULL,
   `precio_boleta` decimal(10,2) NOT NULL,
   `cantidad_boletos` int(11) NOT NULL,
-  `id` int(11) DEFAULT NULL,
-  `id_evento` int(11) DEFAULT NULL
+  `id` bigint(20) NOT NULL,
+  `id_evento` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -213,7 +213,7 @@ CREATE TABLE `producto` (
 
 CREATE TABLE `reservacion` (
   `id_reservacion` int(11) NOT NULL,
-  `id` int(11) DEFAULT NULL,
+  `id` bigint(20) NOT NULL,
   `cantidad_personas` int(11) NOT NULL,
   `cantidad_mesas` int(11) NOT NULL,
   `fecha_reservacion` date NOT NULL,
@@ -257,7 +257,7 @@ INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, 
 --
 
 CREATE TABLE `users` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+  `id` bigint(20) NOT NULL,
   `name` varchar(255) NOT NULL,
   `apellido` varchar(255) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
@@ -294,24 +294,20 @@ CREATE TABLE `venta` (
   `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
   `total` decimal(10,2) NOT NULL,
   `metodo_pago` enum('efectivo','tarjeta','transferencia') NOT NULL,
-  `id` int(11) DEFAULT NULL
+  `id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `venta`
---
-
-INSERT INTO `venta` (`id_venta`, `fecha`, `total`, `metodo_pago`, `id`) VALUES
-(7, '2025-09-19 07:37:07', 40000.00, 'efectivo', NULL),
-(8, '2025-09-19 07:42:53', 40000.00, 'efectivo', 1),
-(9, '2025-09-19 07:45:05', 5000.00, 'efectivo', 1),
-(10, '2025-09-19 07:47:21', 5000.00, 'efectivo', 1),
-(11, '2025-09-19 07:52:29', 5000.00, 'efectivo', 1),
-(12, '2025-09-19 07:55:36', 5000.00, 'efectivo', 1);
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `boleta`
+--
+ALTER TABLE `boleta`
+  ADD PRIMARY KEY (`id_boleta`),
+  ADD KEY `idx_boleta_id_evento` (`id_evento`),
+  ADD KEY `idx_boleta_id` (`id`);
 
 --
 -- Indices de la tabla `cache`
@@ -382,7 +378,8 @@ ALTER TABLE `producto`
 --
 ALTER TABLE `reservacion`
   ADD PRIMARY KEY (`id_reservacion`),
-  ADD KEY `id_usuario` (`id`);
+  ADD KEY `id_usuario` (`id`),
+  ADD KEY `idx_reservacion_id` (`id`);
 
 --
 -- Indices de la tabla `sessions`
@@ -405,7 +402,7 @@ ALTER TABLE `users`
 --
 ALTER TABLE `venta`
   ADD PRIMARY KEY (`id_venta`),
-  ADD KEY `id_usuario` (`id`);
+  ADD KEY `fk_venta_users` (`id`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -416,12 +413,6 @@ ALTER TABLE `venta`
 --
 ALTER TABLE `detalle_venta`
   MODIFY `id_detalleV` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `evento`
---
-ALTER TABLE `evento`
-  MODIFY `id_evento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `failed_jobs`
@@ -454,20 +445,21 @@ ALTER TABLE `reservacion`
   MODIFY `id_reservacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT de la tabla `users`
---
-ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
 -- AUTO_INCREMENT de la tabla `venta`
 --
 ALTER TABLE `venta`
-  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `boleta`
+--
+ALTER TABLE `boleta`
+  ADD CONSTRAINT `fk_boleta_eventos` FOREIGN KEY (`id_evento`) REFERENCES `evento` (`id_evento`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_boleta_users` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `detalle_venta`
@@ -475,6 +467,18 @@ ALTER TABLE `venta`
 ALTER TABLE `detalle_venta`
   ADD CONSTRAINT `detalle_venta_ibfk_1` FOREIGN KEY (`id_venta`) REFERENCES `venta` (`id_venta`),
   ADD CONSTRAINT `detalle_venta_ibfk_2` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`);
+
+--
+-- Filtros para la tabla `reservacion`
+--
+ALTER TABLE `reservacion`
+  ADD CONSTRAINT `fk_reservacion_users` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `venta`
+--
+ALTER TABLE `venta`
+  ADD CONSTRAINT `fk_venta_users` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
