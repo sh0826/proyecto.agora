@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+
+body{
+   margin: 0;
+    background-color: #790101;
+    font-family: Arial,  sans-serif;
+}
+ 
+.logo img{
+    position: relative;
+    width: 650px;
+    height: auto;
+margin-top: -200px;
+}
+
+
+img{
+    width: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 0px;
+}
+
+nav{
+  padding: 0px;
+    background-color:#4B1F1F;
+    border:2px solid rgb(0, 0, 0);
+    border-radius: 2px;
+    position: relative;
+    top: -150px; /* Ajusta el valor según lo que necesites */
+}
+ul{
+    list-style-type:  none;
+    display: flex;
+    justify-content: space-around;/*distribuye los elementos equitativamente*/
+    padding: 0px;
+
+}
+li{
+    margin: 0;
+    padding: 2px;
+
+}
+
+li:hover{
+    transition: 250px;
+    background-color: #000;
+    letter-spacing: 3px;
+    text-shadow:0 0 10px rgba(247, 247, 247, 0.5) ;
+
+}
+nav a {
+    display: block; 
+    text-decoration: none; 
+   padding: 5px 15px;
+    color: #ffffff; 
+    border-radius: 5px; 
+    text-align: center; 
+    transition: background-color 0.3s ease; 
+}
+.contenido{
+    background-image: url('imagenes/fondo-bar.svg');
+    margin-top: -150px;
+}
+
+.titulo2 {
+     border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    text-align: center;
+    color: rgb(10, 10, 10);
+    background-color: rgb(255, 255, 255);
+    width: 250px;
+    margin: 20px auto 10px;
+    letter-spacing: 2px;
+    padding: 10px;
+}
+.catalogo{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+.categoria{
+  background: linear-gradient(to right, 
+              #790101 0%,               
+              #ffffff 80%);
+    color: rgb(0, 0, 0);
+    border-radius: 25px;
+    padding: 15px;
+    height: 450px;
+    width: 250px;
+    text-align: center;
+    margin: 10px 0px;
+}
+.categoria img{
+    width: 100%;
+    height: 70%;
+    border-radius: 10px;
+    margin-bottom: 5px;
+}
+.footer {
+    background-color: #111;
+    color: #eee;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    margin-top: 30px;
+}
+
+.footer a {
+    color: #ffa500; /* naranja */
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+    </style>
+</head>
+
+<body>
+
+ <header class="presentacion">
+    <div class="logo">
+        <img src="imagenes/logo1.svg" alt="logo">
+       </div> 
+
+    <nav>
+        <ul>
+        <li><a href="catalogo.html">Catalogo</a></li>
+        <li><a href="reservaciones.html">Reservaciones</a></li>
+        <li><a href="eventos.html">Eventos </a></li>
+        <li><a href="index.html">Conocenos</a></li>
+      </ul>
+    </nav>
+ </header>
+
+    <div class="contenido">
+        <H2 class="titulo2">Catalogo</H2>    
+
+        <main class="catalogo">
+         <div class="categoria">
+            <img src="imagenes/heretic.png">
+            <p> Heretic 700ml</p>
+            <p>Precio:$130.000</p>
+        </div>
+        
+       
+        <div class="categoria">
+            <img src="imagenes/monkey.png">
+            <p>Monkey Shoulder 700ml</p>
+            <p>Precio:$210.000</p>
+        </div>
+        
+
+        <div class="categoria">
+            <img src="imagenes/reposado.png ">
+            <p>Aguardiente Nectar Reposado 700ml</p>
+            <p>Precio:$100.000</p>
+        </div>
+    
+   
+        <div class="categoria">
+            <img src="imagenes/olmeca.png">
+            <p>Tequila Olmeca Dark Chocolate 700ml</p>
+            <p>Precio:$170.000</p>
+        </div>
+        
+   
+        <div class="categoria">
+            <img src="imagenes/belirum.png">
+            <p>Cerveza Delirium Nocturnum Botella 330ml</p>
+            <p>Precio: $30.000</p>
+        </div>
+        <div class="categoria"> 
+        <img src="imagenes/Jack.png">
+        <p> Jack Daniels Jennessee FIRE 700ml </p>
+        <p> Precio: $170.000</p>
+        </div>  
+        <div class="categoria">
+               <img src="imagenes/corona.png"> 
+               <p>Cerveza Corona 330ml</p>
+               <p>precio: $8.000</p>
+         </div>
+         <div class="categoria">
+            <img src="imagenes/frangelico.png">
+            <p>Frangelico 700ml</p>
+            <p>Precio: 210.500</p>
+         </div>
+        
+        </main>
+    </div>
+   </div>
+    </div>
+    <footer class="footer">
+    <div class="footer-contenido">
+        <p><strong>📍 Dirección:</strong> Calle 123 #45-67, Bogotá, Colombia</p>
+        <p><a href="#">Términos y condiciones</a> | <a href="#">Política de privacidad</a></p>
+        <p><strong>📧 Contacto:</strong> agoravives@correo.com</p>
+        <p>&copy; 2025 Agora Vives Pub. Todos los derechos reservados.</p>
+    </div>
+</footer>
+       
+</body>
+</html>
